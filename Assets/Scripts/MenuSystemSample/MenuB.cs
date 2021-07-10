@@ -5,7 +5,7 @@ using Zenject;
 
 namespace MenuSystemSample
 {
-    public class MenuA : Menu<MenuName, MenuAArg, MenuA>
+    public class MenuB : Menu<MenuName, MenuBArg, MenuB>
     {
         [Inject] private SampleMenuManager _menuManager;
         [SerializeField] private Text _txt;
@@ -21,7 +21,6 @@ namespace MenuSystemSample
             base.OnShowAfter(e);
         }
 
-        
         public override void OnHideBefore()
         {
             base.OnHideBefore();
@@ -31,28 +30,18 @@ namespace MenuSystemSample
         {
             base.OnHideAfter();
         }
-
-        public void OnClick_MenuBBtn()
-        {
-            _menuManager.OpenMenu(MenuName.B, new MenuBArg());
-        }
         
-        public void OnClick_MenuCBtn()
+        public void OnClick_CloseBtn()
         {
-            _menuManager.OpenMenu(MenuName.C, new MenuCArg());
-        }
-        
-        public void OnClick_MenuDBtn()
-        {
-            _menuManager.OpenMenu(MenuName.D, new MenuDArg());
+            _menuManager.CloseMenu(menuName);
         }
     }
 
-    public class MenuAArg : MenuArgs
+    public class MenuBArg : MenuArgs
     {
-        public MenuAArg()
+        public MenuBArg()
         {
-            mode = MenuMode.Single;
+            mode = MenuMode.Additive;
         }
     }
 }

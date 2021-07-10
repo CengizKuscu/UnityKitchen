@@ -1,7 +1,7 @@
 namespace UKitchen.MenuSystem
 {
-    public class MenuArg : IMenuArgs
+    public class MenuArgs : IMenuArgs
     {
-        public MenuMode mode { get; }
+        public MenuMode mode { get; set; }
     }
 }

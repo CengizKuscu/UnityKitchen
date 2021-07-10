@@ -63,3 +63,5 @@ crashlytics-build.properties
 
 
 .idea/
+
+Packages/.DS_Store

@@ -25,7 +25,7 @@ UnityKitchen is a  helpfully a library for your Unity Game projects. It contains
 Create a Enum for your menu names. For Example MenuName, Menus etc.
 for [Usage examples][1]
 
-[1]: UnityKitchen/Assets/Scripts/MenuSystemSample
+[1]: Assets/Scripts/MenuSystemSample
 
 ```c#
 public enum MenuName

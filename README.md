@@ -18,5 +18,5 @@ UnityKitchen is a  helpfully a library for your Unity Game projects. It contains
 * [Extenject](https://github.com/modesttree/Zenject) : Dependency Injection Framework for Unity3D
 
 ## Features
-- [Logger](Assets/UKitchen/Logger)
+- [Logger](Assets/UKitchen/Logger) Alternate Log usage like that Debug.Log
 - [MenuSystem](Assets/UKitchen/MenuSystem) Managing menu actions.

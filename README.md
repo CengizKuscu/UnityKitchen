@@ -178,22 +178,18 @@ public class SimpleMenu : Menu<MenuName, SimpleMenuArgs, SimpleMenu>
     public override void OnShowBefore<TMenuArgs>(TMenuArgs e)
     {
         var arg =  e as SimpleMenuArgs;
-        base.OnShowBefore(e);
     }
 
     public override void OnShowAfter<TMenuArgs>(TMenuArgs e)
     {
-        base.OnShowAfter(e);
     }
 
     public override void OnHideBefore()
     {
-        base.OnHideBefore();
     }
 
     public override void OnHideAfter()
     {
-        base.OnHideAfter();
     }
 }
 

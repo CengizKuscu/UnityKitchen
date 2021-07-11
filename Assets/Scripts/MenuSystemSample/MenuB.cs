@@ -1,3 +1,4 @@
+using UKitchen.Logger;
 using UKitchen.MenuSystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ namespace MenuSystemSample
         {
             base.OnShowBefore(e);
             _txt.text = menuName.ToString();
+            AppLog.Warning(this, "MENU B ON SHOW BEFORE", menuName.ToString());
         }
 
         public override void OnShowAfter<TMenuArgs>(TMenuArgs e)

@@ -19,6 +19,4 @@ UnityKitchen is a  helpfully a library for your Unity Game projects. It contains
 
 ## Features
 - [MenuSystem](Assets/UKitchen/MenuSystem)
-- [Logger]([3])
-
-[3]: Assets/UKitchen/Logger
+- [Logger](Assets/UKitchen/Logger)

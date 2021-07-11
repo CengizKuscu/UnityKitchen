@@ -39,11 +39,13 @@ namespace MenuSystemSample
                         Open(_menuCFactory.Create(menuContainer, args), args);
                         break;
                     case MenuName.D:
-                        Open(_menuDFactory.Create(menuContainer, args), args);
+                        Open(_menuDFactory.Create(popupContainer, args), args);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(nameof(menuName), menuName, null);
                 }
+
+                return true;
             }
             
             return false;

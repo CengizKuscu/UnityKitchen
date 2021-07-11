@@ -34,6 +34,6 @@ namespace UKitchen.MenuSystem
     {
         protected IMenuArgs _args;
         
-        public TArgs args => (TArgs) _args;
+        public TArgs Args => (TArgs) _args;
     }
 }

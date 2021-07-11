@@ -25,7 +25,7 @@ namespace UKitchen.MenuSystem
 
     public interface IMenu<TEnum, TArgs> : IMenu<TEnum> where TEnum : struct, Enum where TArgs : IMenuArgs
     {
-        TArgs args { get; }
+        TArgs Args { get; }
 
         void Prepare<TArgs>(TArgs args) where TArgs : IMenuArgs;
     }

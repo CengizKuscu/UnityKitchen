@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using MenuSystemSample;
 using UKitchen.MenuSystem;
@@ -32,8 +31,6 @@ public class MenuPrefabInstaller : ScriptableObjectInstaller<MenuPrefabInstaller
                     Container.Bind<GameObject>().FromInstance(s.gameObject).WhenInjectedInto<MenuD.Factory>();
                     Container.BindFactory<Transform, IMenuArgs, MenuD, MenuD.Factory>().FromFactory<MenuD.Factory>();
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
         });
     }

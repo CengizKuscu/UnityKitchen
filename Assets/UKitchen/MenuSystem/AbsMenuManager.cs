@@ -15,7 +15,7 @@ namespace UKitchen.MenuSystem
         public Transform popupContainer => _popupContainer;
         public GameObject loadingAnim => _loadingAnim;
 
-        protected List<IMenu<TEnum>> menuLinkedList = new List<IMenu<TEnum>>();
+        protected List<AbsMenu<TEnum>> menuLinkedList = new List<AbsMenu<TEnum>>();
 
         public virtual void Init()
         {
@@ -32,11 +32,11 @@ namespace UKitchen.MenuSystem
             }
         }
 
-        public void Open(IMenu<TEnum> menu, IMenuArgs menuArgs)
+        public void Open(AbsMenu<TEnum> menu, IMenuArgs menuArgs)
         {
             loadingAnim?.SetActive(true);
 
-            if (menuArgs.mode == MenuMode.Single)
+            if (menuArgs.mode == MenuMode.Single && !menu.isPopup)
                 CloseOthers();
 
             if (menuLinkedList.FirstOrDefault(s=>s.menuName.Equals(menu.menuName)) != null)
@@ -53,7 +53,7 @@ namespace UKitchen.MenuSystem
 
         public virtual bool OpenMenu(TEnum menuName, IMenuArgs args)
         {
-            IMenu<TEnum> menu = menuLinkedList.FirstOrDefault(s => Equals(s.menuName, menuName));
+            AbsMenu<TEnum> menu = menuLinkedList.FirstOrDefault(s => Equals(s.menuName, menuName));
 
             if (menu != null)
             {
@@ -67,7 +67,7 @@ namespace UKitchen.MenuSystem
 
         public void CloseMenu(TEnum menuName)
         {
-            IMenu<TEnum> menu = menuLinkedList.FirstOrDefault(s => s.menuName.Equals(menuName));
+            AbsMenu<TEnum> menu = menuLinkedList.FirstOrDefault(s => s.menuName.Equals(menuName));
 
             if (menu != null)
             {
@@ -82,7 +82,7 @@ namespace UKitchen.MenuSystem
             if (menuLinkedList.Count == 0)
                 return;
 
-            foreach (IMenu<TEnum> menu in menuLinkedList.ToList())
+            foreach (AbsMenu<TEnum> menu in menuLinkedList.ToList())
             {
                 if (menu.destroyWhenClosed)
                     menuLinkedList.Remove(menu);

@@ -17,7 +17,7 @@ namespace UKitchen.MenuSystem
             Instance = (T) this;
         }
 
-        public override void Prepare()
+        protected override void Prepare()
         {
             _isInit = false;
             gameObject.SetActive(false);
@@ -28,13 +28,13 @@ namespace UKitchen.MenuSystem
             _isInit = true;
         }
 
-        public override void Prepare<TArgs1>(TArgs1 args)
+        protected override void Prepare<TArgs1>(TArgs1 args)
         {
             _args = args;
             Prepare();
         }
 
-        public override void Open()
+        protected internal override void Open()
         {
             OnShowBefore(_args);
             transform.SetAsLastSibling();
@@ -47,16 +47,16 @@ namespace UKitchen.MenuSystem
                 OnShowAfter(_args);
         }
 
-        public override void OnShowBefore<TMenuArgs>(TMenuArgs e)
+        protected override void OnShowBefore<TMenuArgs>(TMenuArgs e)
         {
         }
 
-        public override void OnShowAfter<TMenuArgs>(TMenuArgs e)
+        protected override void OnShowAfter<TMenuArgs>(TMenuArgs e)
         {
         }
 
         
-        public override void Close()
+        protected internal override void Close()
         {
             OnHideBefore();
             gameObject.SetActive(false);
@@ -72,11 +72,11 @@ namespace UKitchen.MenuSystem
             }
         }
 
-        public override void OnHideBefore()
+        protected override void OnHideBefore()
         {
         }
 
-        public override void OnHideAfter()
+        protected override void OnHideAfter()
         {
         }
 

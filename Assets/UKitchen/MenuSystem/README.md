@@ -9,7 +9,7 @@
 Create a Enum for your menu names. For Example MenuName, Menus etc.
 for [Usage examples][1]
 
-[1]: Assets/Scripts/MenuSystemSample
+[1]: ../Examples/MenuExample
 
 ```c#
 public enum MenuName
@@ -159,20 +159,20 @@ Simple Menu and often usage method examples:
 ```c#
 public class SimpleMenu : Menu<MenuName, SimpleMenuArgs, SimpleMenu>
 {
-    public override void OnShowBefore<TMenuArgs>(TMenuArgs e)
+    protected override void OnShowBefore<TMenuArgs>(TMenuArgs e)
     {
         var arg =  e as SimpleMenuArgs;
     }
 
-    public override void OnShowAfter<TMenuArgs>(TMenuArgs e)
+    protected override void OnShowAfter<TMenuArgs>(TMenuArgs e)
     {
     }
 
-    public override void OnHideBefore()
+    protected override void OnHideBefore()
     {
     }
 
-    public override void OnHideAfter()
+    protected override void OnHideAfter()
     {
     }
 }

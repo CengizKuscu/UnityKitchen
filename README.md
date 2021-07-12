@@ -9,6 +9,7 @@
     - [Logger](Assets/UKitchen/Logger)
     - [MenuSystem](Assets/UKitchen/MenuSystem)
     - [Services](Assets/UKitchen/Services)
+    - [States](Assets/UKitchen/States)
 
 </details>
 
@@ -20,6 +21,10 @@ UnityKitchen is a  helpfully a library for your Unity Game projects. It contains
 * [Async Await Support](https://assetstore.unity.com/packages/tools/integration/async-await-support-101056)   //   [Blog](http://www.stevevermeulen.com/index.php/2017/09/using-async-await-in-unity3d-2017/)
 
 ## Features
-- [Logger](Assets/UKitchen/Logger) Alternate Log usage like that Debug.Log
-- [MenuSystem](Assets/UKitchen/MenuSystem) Managing menu actions.
-- [Services](Assets/UKitchen/Services) Managing services (JSON REST-API)
+- [Logger](Assets/UKitchen/Logger) Alternate Log usage like that Debug.Log (Documentation and examples are ready)
+- [MenuSystem](Assets/UKitchen/MenuSystem) Managing menu actions. (Documentation and example ares ready)
+- [Services](Assets/UKitchen/Services) Managing services (JSON REST-API) (Documentation is COMING SOON)
+- [States](Assets/UKitchen/States) Core State Control and basic UI State Items(Text, Image) (Documentation and Examples are COMING SOON)
+- Localization (COMING SOON)
+- Themes (COMING SOON)
+- Firebase and GooglePackages Integration Editor (COMING SOON)

@@ -12,7 +12,7 @@ namespace UKitchen.MenuSystem
 
         void Init();
 
-        void Open(IMenu<TEnum> menu, IMenuArgs menuArgs);
+        void Open(AbsMenu<TEnum> menu, IMenuArgs menuArgs);
 
         bool OpenMenu(TEnum menuName, IMenuArgs args);
 

@@ -1,0 +1,14 @@
+{
+    "wordList": [
+        {
+            "Turkish": "test tr",
+            "English": "test en",
+            "key": "TEST"
+        },
+        {
+            "Turkish": "merhaba",
+            "English": "hello",
+            "key": "hello"
+        }
+    ]
+}

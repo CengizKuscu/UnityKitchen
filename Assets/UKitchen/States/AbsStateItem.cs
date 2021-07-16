@@ -7,7 +7,6 @@ namespace UKitchen.States
     public abstract class AbsStateItem : IStateItem
     {
         [SerializeField] private int _stateValue;
-
         public int StateValue => _stateValue;
     }
     

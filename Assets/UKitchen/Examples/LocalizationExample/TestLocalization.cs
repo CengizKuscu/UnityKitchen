@@ -3,7 +3,7 @@ using UKitchen.Localizations.UI;
 using UnityEngine;
 using Zenject;
 
-namespace UKitchen.Examples.LocalizationExample
+namespace UKitchen.Localizations
 {
     public class TestLocalization : MonoBehaviour
     {

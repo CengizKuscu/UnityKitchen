@@ -1,5 +1,4 @@
 using System;
-using UKitchen.Examples.LocalizationExample;
 using UKitchen.States;
 using UnityEngine;
 using UnityEngine.UI;

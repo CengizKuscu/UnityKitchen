@@ -1,9 +1,8 @@
 using System;
-using UKitchen.Localizations;
 using UKitchen.Localizations.Model;
 using UnityEngine;
 
-namespace UKitchen.Examples.LocalizationExample
+namespace UKitchen.Localizations
 {
     [Serializable]
     public class LocalizationSettings : AbsLocalizationSettings

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using UKitchen.Examples.LocalizationExample;
 using UKitchen.Localizations.Model;
 using UKitchen.Logger;
 using UnityEditor;

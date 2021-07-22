@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UKitchen.Examples.LocalizationExample;
 using UKitchen.Localizations.Model;
 using UnityEditor;
 
@@ -100,8 +99,7 @@ namespace UKitchen.Localizations.UI
 
                         EditorGUILayout.PropertyField(_stateValue);
                         EditorGUILayout.PropertyField(useLocalization);
-                        if (useLocalization.boolValue)
-                        {
+                        
                             if (useLocalization.boolValue)
                             {
                                 if (string.IsNullOrEmpty(key.stringValue))
@@ -120,7 +118,7 @@ namespace UKitchen.Localizations.UI
                             }
 
                             EditorGUILayout.PropertyField(stateStr);
-                        }
+                        
                         
                             //}
 

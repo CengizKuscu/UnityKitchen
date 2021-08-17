@@ -22,9 +22,9 @@ UnityKitchen is a  helpfully a library for your Unity Game projects. It contains
 
 ## Features
 - [Logger](Assets/UKitchen/Logger) Alternate Log usage like that Debug.Log (Documentation and examples are ready)
-- [MenuSystem](Assets/UKitchen/MenuSystem) Managing menu actions. (Documentation and example ares ready)
-- [Services](Assets/UKitchen/Services) Managing services (JSON REST-API) (Documentation is COMING SOON)
-- [States](Assets/UKitchen/States) Core State Control and basic UI State Items(Text, Image) (Documentation and Examples are COMING SOON)
-- Localization (COMING SOON)
-- Themes (COMING SOON)
+- [MenuSystem](Assets/UKitchen/MenuSystem) Managing menu actions. (Documentation and example are ready)
+- [Services](Assets/UKitchen/Services) Managing services (JSON REST-API) (Documentation and example are ready)
+- [States](Assets/UKitchen/States) Core State Control and basic UI State Items(Text, Image) (Documentation and example: COMING SOON)
+- Localization (Documentation and example: COMING SOON)
+- Themes (Documentation and example: COMING SOON)
 - Firebase and GooglePackages Integration Editor (COMING SOON)

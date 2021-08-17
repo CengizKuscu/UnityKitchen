@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UKitchen.Utils.Editor
+namespace UKitchen.Utils
 {
     public class UICreatorOptions
     {

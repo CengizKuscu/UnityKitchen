@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ad42ae8928a4d1a9f5db8abb9e7853c, type: 3}
+  m_Script: {fileID: 11500000, guid: b3790ea28bf3b42a8883e96aa0f693fc, type: 3}
   m_Name: ThemeInstaller
   m_EditorClassIdentifier: 
-  themes: {fileID: 11400000, guid: 79e72c3c7483b407ca70c25392e40319, type: 2}
-  selectedPalette: 0
+  selectedTheme: 0
+  themeSettings:
+    _name: 
+    themeName: 0
+    colors: []

@@ -1,13 +1,22 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UKitchen.Localizations.Model;
 using UnityEditor;
 
-namespace UKitchen.Localizations.UI
+namespace UKitchen.Localizations
 {
-    [CustomEditor(typeof(LocalizationMonoStateHelper))]
-    public class LocalizationMonoStateHelperEditor : Editor
+    public abstract class AbsLocalizationMonoStateHelperEditor : Editor
+    {
+        
+    }
+
+    public abstract class
+        AbsLocalizationMonoStateHelperEditor<TWord, TSettings, TInstaller, THelper> :
+            AbsLocalizationMonoStateHelperEditor
+    where TWord : AbsWord
+    where TSettings : AbsLocalizationSettings<TWord>
+    where TInstaller : AbsLocalizationInstaller<TWord, TSettings>
+    where THelper : AbsLocalizationMonoStateHelper<TWord, TSettings, TInstaller>
     {
         private SerializedProperty m_Installer;
         private SerializedProperty m_Text;
@@ -15,7 +24,9 @@ namespace UKitchen.Localizations.UI
         private SerializedProperty _stateItems;
         private SerializedProperty _defaultStateValue;
 
-        private LocalizationInstaller _installer;
+        private TInstaller _installer;
+
+        private bool _changeCheck;
 
         private void OnEnable()
         {
@@ -32,19 +43,21 @@ namespace UKitchen.Localizations.UI
         {
             if (m_Installer.objectReferenceValue == null || _installer == null)
             {
-                _installer = AssetDatabase.LoadAssetAtPath<LocalizationInstaller>(
+                _installer = AssetDatabase.LoadAssetAtPath<TInstaller>(
                     "Assets/Resources/UnityKitchen/LocalizationInstaller.asset");
                 m_Installer.objectReferenceValue = _installer;
             }
         }
-
+        
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
             Init();
 
-            LocalizationMonoStateHelper comp = (LocalizationMonoStateHelper) target;
+            THelper comp = (THelper) target;
+
+            EditorGUI.BeginChangeCheck();
 
             EditorGUI.BeginDisabledGroup(true);
             EditorGUILayout.PropertyField(m_Installer);
@@ -58,16 +71,19 @@ namespace UKitchen.Localizations.UI
             EditorGUI.indentLevel++;
             ShowStateList(_stateItems);
             EditorGUI.indentLevel--;
-            if (m_useState.boolValue)
+
+            _changeCheck = EditorGUI.EndChangeCheck();
+
+            if (_changeCheck)
             {
-                comp.StateValue = _defaultStateValue.intValue;
-                
+                m_Text?.serializedObject.ApplyModifiedProperties();
+                if (m_useState.boolValue)
+                {
+                    comp.StateValue = _defaultStateValue.intValue;
+                }
             }
 
             serializedObject.ApplyModifiedProperties();
-            
-            EditorUtility.SetDirty(this);
-            EditorUtility.SetDirty(comp);
         }
 
         private void ShowStateList(SerializedProperty list)
@@ -75,7 +91,7 @@ namespace UKitchen.Localizations.UI
             if (_installer == null)
                 return;
 
-            List<Word> wordList = _installer.settings.wordList;
+            List<TWord> wordList = _installer.settings.wordList;
             string[] keyList = wordList.Select(s => s.key).ToArray();
 
             EditorGUILayout.PropertyField(list, false);
@@ -93,34 +109,36 @@ namespace UKitchen.Localizations.UI
 
                         SerializedProperty _stateValue = item.FindPropertyRelative("_stateValue");
                         SerializedProperty useLocalization = item.FindPropertyRelative("useLocalization");
+                        SerializedProperty toUpper = item.FindPropertyRelative("toUpper");
                         SerializedProperty key = item.FindPropertyRelative("key");
                         SerializedProperty stateStr = item.FindPropertyRelative("text");
 
 
                         EditorGUILayout.PropertyField(_stateValue);
                         EditorGUILayout.PropertyField(useLocalization);
-                        
-                            if (useLocalization.boolValue)
+
+                        if (useLocalization.boolValue)
+                        {
+                            EditorGUILayout.PropertyField(toUpper);
+                            if (string.IsNullOrEmpty(key.stringValue))
+                                key.stringValue = keyList[0];
+
+                            int keyIndex = wordList.FindIndex(s => s.key == key.stringValue);
+
+                            keyIndex = EditorGUILayout.Popup(keyIndex, keyList);
+
+                            TWord word = wordList.FirstOrDefault(s => s.key == keyList[keyIndex]);
+                            if (word != null)
                             {
-                                if (string.IsNullOrEmpty(key.stringValue))
-                                    key.stringValue = keyList[0];
-
-                                int keyIndex = wordList.FindIndex(s => s.key == key.stringValue);
-
-                                keyIndex = EditorGUILayout.Popup(keyIndex, keyList);
-
-                                Word word = wordList.FirstOrDefault(s => s.key == keyList[keyIndex]);
-                                if (word != null)
-                                {
-                                    stateStr.stringValue = _installer.settings.GetText(key.stringValue);
-                                    key.stringValue = keyList[keyIndex];
-                                }
+                                stateStr.stringValue = _installer.settings.GetText(key.stringValue);
+                                key.stringValue = keyList[keyIndex];
                             }
+                        }
 
-                            EditorGUILayout.PropertyField(stateStr);
-                        
-                        
-                            //}
+                        EditorGUILayout.PropertyField(stateStr);
+
+
+                        //}
 
 
                         EditorGUI.indentLevel--;

@@ -6,20 +6,20 @@ using UnityEngine;
 
 namespace UKitchen.Localizations
 {
-    public abstract class AbsLocalizationSettings
+    public abstract class AbsLocalizationSettings<TWord> where TWord : AbsWord
     {
         public SystemLanguage appLanguage;
         public TextAsset languageSource;
         public bool useSystemLanguage;
-        public List<Word> wordList;
+        public List<TWord> wordList;
 
-        protected abstract string GetWordByLanguage(Word word, SystemLanguage lang);
+        protected abstract string GetWordByLanguage(TWord word, SystemLanguage lang);
 
         public string GetText(string key)
         {
             if (wordList.Any())
             {
-                Word word = wordList.FirstOrDefault(s => s.key == key);
+                TWord word = wordList.FirstOrDefault(s => s.key == key);
 
                 if (word != null)
                 {
@@ -33,7 +33,7 @@ namespace UKitchen.Localizations
         public string GetText(string key, params object[] args)
         {
 
-            Word word = wordList?.FirstOrDefault(s => s.key == key);
+            TWord word = wordList?.FirstOrDefault(s => s.key == key);
             
             string result = "[" + key + "]";
             
@@ -56,5 +56,7 @@ namespace UKitchen.Localizations
 
             return "[" + key + "]";
         }
+
+        public abstract string GetTextUpper(string key);
     }
 }

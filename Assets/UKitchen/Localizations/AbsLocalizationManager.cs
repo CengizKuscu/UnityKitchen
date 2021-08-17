@@ -1,20 +1,17 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 using UKitchen.Localizations.Model;
 using UnityEngine;
 using Zenject;
 
 namespace UKitchen.Localizations
 {
-    public class LocalizationManager : IInitializable
+    public abstract class AbsLocalizationManager<TWord, TSettings> : IInitializable where TWord : AbsWord where TSettings : AbsLocalizationSettings<TWord>
     {
-        [Inject] private readonly AbsLocalizationSettings _settings;
-
+        [Inject] private readonly TSettings _settings;
+        
         private const string CURRENT_LANGUAGE_SAVE_KEY = "CURRENT_LANGUAGE";
         
         private SystemLanguage _currentLanguage;
-
+        
         public void Initialize()
         {
             if (_settings.useSystemLanguage)

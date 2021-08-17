@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: LocalizationInstaller
   m_EditorClassIdentifier: 
   settings:
-    appLanguage: 37
-    languageSource: {fileID: 0}
+    appLanguage: 10
+    languageSource: {fileID: 4900000, guid: 408cd2c25f66640f1a893ffc57f751f2, type: 3}
     useSystemLanguage: 0
     wordList:
-    - Turkish: test tr
+    - key: TEST
+      Turkish: test tr
       English: test en
-      key: TEST
-    - Turkish: merhaba
+    - key: hello
+      Turkish: merhaba
       English: hello
-      key: hello

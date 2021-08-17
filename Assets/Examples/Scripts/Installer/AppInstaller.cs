@@ -1,3 +1,4 @@
+using Localizations;
 using Services;
 using Zenject;
 
@@ -7,6 +8,8 @@ namespace Examples.Scripts.Installer
     {
         public override void InstallBindings()
         {
+            Container.BindInterfacesAndSelfTo<LocalizationManager>().AsSingle();
+            
             Container.Bind<RandomDogService>().AsSingle();
 
             SignalBusInstaller.Install(Container);

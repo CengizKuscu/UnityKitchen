@@ -1,3 +1,5 @@
+using Examples;
+using Localizations;
 using Services;
 using UKitchen.MenuSystem;
 using UnityEngine;
@@ -11,8 +13,10 @@ namespace AppMenus
         [Inject] private readonly MenuManager _menuManager;
         [Inject] private readonly SignalBus _signal;
         [Inject] private RandomDogService _service;
+        [Inject] private LocalizationSettings _localization;
         [SerializeField] private Text _txt;
         [SerializeField] private Text _serviceResultTxt;
+        [SerializeField] private Text _localizationTxt;
 
         public void OnClick_RandomDogBtn()
         {
@@ -24,6 +28,7 @@ namespace AppMenus
             _signal.TryUnsubscribe<DogImageResponseSignal>(DogImageResult);
             _signal.Subscribe<DogImageResponseSignal>(DogImageResult);
             _txt.text = menuName.ToString();
+            _localizationTxt.text = _localization.GetText("hello");
         }
 
         protected override void OnHideBefore()

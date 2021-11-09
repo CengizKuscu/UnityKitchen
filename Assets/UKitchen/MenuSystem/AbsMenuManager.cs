@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ModestTree;
 using UnityEngine;
+using Zenject;
 
 namespace UKitchen.MenuSystem
 {
@@ -32,6 +34,9 @@ namespace UKitchen.MenuSystem
             }
         }
 
+        public abstract void OpenMenu(TEnum menuName, IMenuArgs args);
+        
+
         public void Open(AbsMenu<TEnum> menu, IMenuArgs menuArgs)
         {
             loadingAnim?.SetActive(true);
@@ -50,19 +55,23 @@ namespace UKitchen.MenuSystem
             menu.Open();
             loadingAnim?.SetActive(false);
         }
+        
 
-        public virtual bool OpenMenu(TEnum menuName, IMenuArgs args)
+        public bool IsAlreadyOpen(TEnum menuName, IMenuArgs args, bool update)
+        {
+            AbsMenu<TEnum> menu = menuLinkedList.FirstOrDefault(s => Equals(s.menuName, menuName));
+            
+            if(update)
+                menu?.UpdateMenu(args);
+
+            return menu != null;
+        }
+        
+        public bool IsAlreadyOpen(TEnum menuName)
         {
             AbsMenu<TEnum> menu = menuLinkedList.FirstOrDefault(s => Equals(s.menuName, menuName));
 
-            if (menu != null)
-            {
-                menu.Open();
-
-                return false;
-            }
-
-            return true;
+            return menu != null;
         }
 
         public void CloseMenu(TEnum menuName)

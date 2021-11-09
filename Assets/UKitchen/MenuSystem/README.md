@@ -97,9 +97,9 @@ public class GameMenuManager : AbsMenuManager<MenuName>
         OpenMenu(MenuName.MyFirstMenu, new MyFirstMenuArgs{mode = MenuMode.Single});
     }
     
-    public override bool OpenMenu(MenuName menuName, IMenuArgs args)
+    public override void OpenMenu(MenuName menuName, IMenuArgs args)
     {
-        if(base.OpenMenu(menuName, args))
+        if(!IsAlreadyOpen(menuName, args, true))
         {
             switch(menuName)
             {
@@ -110,9 +110,7 @@ public class GameMenuManager : AbsMenuManager<MenuName>
                     Open(_mySecondMenuFactory.Create(popupContainer, args), args);
                     break;
             }
-            return true;
         }
-        return false;
     }
 }
 ```
@@ -159,12 +157,13 @@ Simple Menu and often usage method examples:
 ```c#
 public class SimpleMenu : Menu<MenuName, SimpleMenuArgs, SimpleMenu>
 {
-    protected override void OnShowBefore<TMenuArgs>(TMenuArgs e)
+    protected override void OnShowBefore()
     {
-        var arg =  e as SimpleMenuArgs;
+        Debug.Log(Args.sampleItemCount);
+        Debug.Log(Args.sampleItemleName);
     }
 
-    protected override void OnShowAfter<TMenuArgs>(TMenuArgs e)
+    protected override void OnShowAfter()
     {
     }
 

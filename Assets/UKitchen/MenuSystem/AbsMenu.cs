@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace UKitchen.MenuSystem
 {
@@ -24,8 +25,10 @@ namespace UKitchen.MenuSystem
         protected abstract void Prepare();
         protected abstract void Prepare<TArgs1>(TArgs1 args) where TArgs1 : IMenuArgs;
         protected internal abstract void Open();
-        protected abstract void OnShowBefore<TMenuArgs>(TMenuArgs e) where TMenuArgs : IMenuArgs;
-        protected abstract void OnShowAfter<TMenuArgs>(TMenuArgs e) where TMenuArgs : IMenuArgs;
+        protected internal abstract void UpdateMenu();
+        protected internal abstract void UpdateMenu<TArgs1>(TArgs1 args) where TArgs1 : IMenuArgs;
+        protected abstract void OnShowBefore();
+        protected abstract void OnShowAfter();
         protected internal abstract void Close();
         protected abstract void OnHideBefore();
         protected abstract void OnHideAfter();

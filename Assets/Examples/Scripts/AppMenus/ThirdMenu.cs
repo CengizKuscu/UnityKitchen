@@ -10,7 +10,7 @@ namespace AppMenus
         [Inject] private MenuManager _menuManager;
         [SerializeField] private Text _txt;
 
-        protected override void OnShowBefore<TMenuArgs>(TMenuArgs e)
+        protected override void OnShowBefore()
         {
             _txt.text = menuName.ToString();
         }

@@ -23,7 +23,7 @@ namespace AppMenus
             _service.GetRandomDogImage();
         }
         
-        protected override void OnShowBefore<TMenuArgs>(TMenuArgs e)
+        protected override void OnShowBefore()
         {
             _signal.TryUnsubscribe<DogImageResponseSignal>(DogImageResult);
             _signal.Subscribe<DogImageResponseSignal>(DogImageResult);

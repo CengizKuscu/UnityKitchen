@@ -25,9 +25,9 @@ namespace AppMenus
             OpenMenu(MenuName.MyFirstMenu, new MyFirstMenuArgs());
         }
 
-        public override bool OpenMenu(MenuName menuName, IMenuArgs args)
+        public override void OpenMenu(MenuName menuName, IMenuArgs args)
         {
-            if (base.OpenMenu(menuName, args))
+            if (!IsAlreadyOpen(menuName, args, true))
             {
                 switch (menuName)
                 {
@@ -47,11 +47,7 @@ namespace AppMenus
                         Open(_popupMenuFactory.Create(popupContainer, args), args);
                         break;
                 }
-
-                return true;
             }
-
-            return false;
         }
     }
 }

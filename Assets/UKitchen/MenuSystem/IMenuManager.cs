@@ -14,7 +14,10 @@ namespace UKitchen.MenuSystem
 
         void Open(AbsMenu<TEnum> menu, IMenuArgs menuArgs);
 
-        bool OpenMenu(TEnum menuName, IMenuArgs args);
+        void OpenMenu(TEnum menuName, IMenuArgs args);
+
+        bool IsAlreadyOpen(TEnum menuName, IMenuArgs args, bool update);
+        bool IsAlreadyOpen(TEnum menuName);
 
         void CloseMenu(TEnum menuName);
 

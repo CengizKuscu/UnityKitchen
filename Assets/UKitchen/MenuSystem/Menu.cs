@@ -36,22 +36,34 @@ namespace UKitchen.MenuSystem
 
         protected internal override void Open()
         {
-            OnShowBefore(_args);
+            OnShowBefore();
             transform.SetAsLastSibling();
             gameObject.SetActive(true);
+        }
+        
+        protected internal override void UpdateMenu()
+        {
+            Prepare();
+            Open();
+        }
+
+        protected internal override void UpdateMenu<TArgs1>(TArgs1 args)
+        {
+            Prepare(args);
+            Open();
         }
 
         private void OnEnable()
         {
             if (_isInit)
-                OnShowAfter(_args);
+                OnShowAfter();
         }
 
-        protected override void OnShowBefore<TMenuArgs>(TMenuArgs e)
+        protected override void OnShowBefore()
         {
         }
 
-        protected override void OnShowAfter<TMenuArgs>(TMenuArgs e)
+        protected override void OnShowAfter()
         {
         }
 

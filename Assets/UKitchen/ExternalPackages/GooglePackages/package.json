@@ -1,0 +1,133 @@
+{
+  "packages": [
+    {
+      "id": "FirebaseFirestore",
+      "name": "com.google.firebase.firestore",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.firestore/com.google.firebase.firestore-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp"
+      ]
+    },
+    {
+      "id": "FirebaseInstallations",
+      "name": "com.google.firebase.installations",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.installations/com.google.firebase.installations-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp"
+      ]
+    },
+    {
+      "id": "FirebaseStorage",
+      "name": "com.google.firebase.storage",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.storage/com.google.firebase.storage-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp",
+        "FirebaseAuth"
+      ]
+    },
+    {
+      "id": "FirebaseFunctions",
+      "name": "com.google.firebase.functions",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.functions/com.google.firebase.functions-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp"
+      ]
+    },
+    {
+      "id": "FirebaseDatabase",
+      "name": "com.google.firebase.database",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.database/com.google.firebase.database-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp",
+        "FirebaseAuth"
+      ]
+    },
+    {
+      "id": "FirebaseMessaging",
+      "name": "com.google.firebase.messaging",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.messaging/com.google.firebase.messaging-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp"
+      ]
+    },
+    {
+      "id": "FirebaseRemoteConfig",
+      "name": "com.google.firebase.remote-config",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.remote-config/com.google.firebase.remote-config-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp"
+      ]
+    },
+    {
+      "id": "FirebaseDynamicLinks",
+      "name": "com.google.firebase.dynamic-links",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.dynamic-links/com.google.firebase.dynamic-links-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp"
+      ]
+    },
+    {
+      "id": "FirebaseCrashlytics",
+      "name": "com.google.firebase.crashlytics",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.crashlytics/com.google.firebase.crashlytics-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp"
+      ]
+    },
+    {
+      "id": "FirebaseAuth",
+      "name": "com.google.firebase.auth",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.auth/com.google.firebase.auth-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp"
+      ]
+    },
+    {
+      "id": "FirebaseAnalytics",
+      "name": "com.google.firebase.analytics",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.analytics/com.google.firebase.analytics-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager",
+        "FirebaseApp"
+      ]
+    },
+    {
+      "id": "ExternalDependencyManager",
+      "name": "com.google.external-dependency-manager",
+      "url": "https://dl.google.com/games/registry/unity/com.google.external-dependency-manager/com.google.external-dependency-manager-1.2.166.tgz",
+      "version": "1.2.166",
+      "requireIds": [
+      ]
+    },
+    {
+      "id": "FirebaseApp",
+      "name": "com.google.firebase.app",
+      "url": "https://dl.google.com/games/registry/unity/com.google.firebase.app/com.google.firebase.app-8.3.0.tgz",
+      "version": "8.3.0",
+      "requireIds": [
+        "ExternalDependencyManager"
+      ]
+    }
+  ]
+}

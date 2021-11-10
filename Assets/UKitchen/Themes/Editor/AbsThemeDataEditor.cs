@@ -41,6 +41,8 @@ namespace UKitchen.Themes
 
         private TInstaller _installer;
         private TConfigs _themes = null;
+        
+        private Vector2 scrollPos;
 
         protected static void ShowWindow()
         {
@@ -141,10 +143,12 @@ namespace UKitchen.Themes
 
             SerializedProperty tmpTheme = themes.GetArrayElementAtIndex(0);
 
-
             if (_configThemes.isExpanded)
             {
                 _configThemes.arraySize = EditorGUILayout.IntField("Array Size", _configThemes.arraySize);
+                
+                scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.ExpandWidth(true));
+                
                 for (int i = 0; i < _configThemes.arraySize; i++)
                 {
                     EditorGUILayout.Separator();
@@ -211,6 +215,8 @@ namespace UKitchen.Themes
 
                     EditorGUI.indentLevel--;
                 }
+                
+                EditorGUILayout.EndScrollView();
             }
 
             EditorGUILayout.EndVertical();

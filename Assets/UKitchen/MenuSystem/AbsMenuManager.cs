@@ -98,5 +98,19 @@ namespace UKitchen.MenuSystem
                 menu.Close();
             }
         }
+        
+        public void CloseOthers(params TEnum[] menuNames)
+        {
+            if (menuLinkedList.Count == 0)
+                return;
+            
+            foreach (AbsMenu<TEnum> menu in menuLinkedList.ToList())
+            {
+                if(menuNames.Contains(menu.menuName)) continue;
+                if (menu.destroyWhenClosed)
+                    menuLinkedList.Remove(menu);
+                menu.Close();
+            }
+        }
     }
 }

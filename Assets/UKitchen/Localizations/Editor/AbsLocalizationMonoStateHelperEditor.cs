@@ -90,6 +90,10 @@ namespace UKitchen.Localizations
         {
             if (_installer == null)
                 return;
+            
+            var tmp = list?.FindPropertyRelative("Array.size");
+            if(tmp == null)
+                return;
 
             List<TWord> wordList = _installer.settings.wordList;
             string[] keyList = wordList.Select(s => s.key).ToArray();
@@ -122,6 +126,14 @@ namespace UKitchen.Localizations
                             EditorGUILayout.PropertyField(toUpper);
                             if (string.IsNullOrEmpty(key.stringValue))
                                 key.stringValue = keyList[0];
+                            
+                            string search = string.Empty;
+                            search = EditorGUILayout.TextField("Search", search);
+
+                            if (!string.IsNullOrEmpty(search) && keyList.Contains(search))
+                            {
+                                key.stringValue = search;
+                            }
 
                             int keyIndex = wordList.FindIndex(s => s.key == key.stringValue);
 

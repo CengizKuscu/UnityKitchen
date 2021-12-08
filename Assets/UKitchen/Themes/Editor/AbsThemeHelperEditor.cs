@@ -24,8 +24,8 @@ namespace UKitchen.Themes
         private TInstaller _installer;
 
         private bool _changeCheck;
-        //private bool _changeCheck2;
-
+        private bool _changeCheck2;
+        
         private void OnEnable()
         {
             m_Installer = serializedObject.FindProperty("m_Installer");
@@ -72,6 +72,7 @@ namespace UKitchen.Themes
             EditorGUILayout.PropertyField(m_useState);
 
             EditorGUILayout.PropertyField(_defaultStateValue);
+            EditorGUI.BeginChangeCheck();
             EditorGUI.indentLevel++;
             ShowStateList(_stateItems);
             EditorGUI.indentLevel--;
@@ -84,7 +85,7 @@ namespace UKitchen.Themes
             _changeCheck = EditorGUI.EndChangeCheck();
 
             
-            if (_changeCheck)
+            if (_changeCheck || _changeCheck2)
             {
                 m_Image?.serializedObject.ApplyModifiedProperties();
                 m_Text?.serializedObject.ApplyModifiedProperties();
@@ -93,9 +94,7 @@ namespace UKitchen.Themes
                     comp.StateValue = _defaultStateValue.intValue;
                 }
             }
-
             serializedObject.ApplyModifiedProperties();
-
         }
 
         private void ShowStateList(SerializedProperty list)
@@ -103,6 +102,12 @@ namespace UKitchen.Themes
             if (_installer == null)
                 return;
 
+            var tmp = list.FindPropertyRelative("Array.size");
+            if (tmp.serializedObject == null)
+                return;
+
+            EditorGUI.BeginChangeCheck();
+            
             EditorGUILayout.PropertyField(list, false);
             if (list.isExpanded)
             {
@@ -157,6 +162,7 @@ namespace UKitchen.Themes
                     EditorGUI.indentLevel--;
                 }
             }
+            _changeCheck2 = EditorGUI.EndChangeCheck();
         }
     }
 }

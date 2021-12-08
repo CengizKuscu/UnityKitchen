@@ -68,6 +68,7 @@ namespace UKitchen.Themes
                     var asset = ScriptableObject.CreateInstance<TConfigs>();
                     AssetDatabase.CreateAsset(asset, $"Assets" + _themeAssetPath);
                     AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
                 }
 
                 if (!File.Exists(installerPath) && GUILayout.Button("Create Theme Installer"))
@@ -75,6 +76,7 @@ namespace UKitchen.Themes
                     var asset = ScriptableObject.CreateInstance<TInstaller>();
                     AssetDatabase.CreateAsset(asset, $"Assets" + _installerAssetPath);
                     AssetDatabase.SaveAssets();
+                    AssetDatabase.Refresh();
                 }
 
                 _isContinue = false;
@@ -123,10 +125,13 @@ namespace UKitchen.Themes
                     _installer.themeSettings = tmpTheme;
                     AssetDatabase.SaveAssets();
                     AssetDatabase.Refresh();
+                    EditorUtility.SetDirty(_installer);
+                    
                 }
 
 
                 _installerSerializedObject.ApplyModifiedProperties();
+                AssetDatabase.SaveAssetIfDirty(_installer);
             }
         }
 
@@ -146,7 +151,7 @@ namespace UKitchen.Themes
             if (_configThemes.isExpanded)
             {
                 _configThemes.arraySize = EditorGUILayout.IntField("Array Size", _configThemes.arraySize);
-                
+
                 scrollPos = EditorGUILayout.BeginScrollView(scrollPos, GUILayout.ExpandWidth(true));
                 
                 for (int i = 0; i < _configThemes.arraySize; i++)

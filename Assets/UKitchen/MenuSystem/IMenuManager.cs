@@ -8,8 +8,6 @@ namespace UKitchen.MenuSystem
         Transform menuContainer { get; }
         Transform popupContainer { get; }
 
-        GameObject loadingAnim { get; }
-
         void Init();
 
         void Open(AbsMenu<TEnum> menu, IMenuArgs menuArgs);

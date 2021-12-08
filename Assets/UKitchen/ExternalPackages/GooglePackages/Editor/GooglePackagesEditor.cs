@@ -29,7 +29,7 @@ namespace UKitchen.ExternalPackages.GooglePackages.Editor
 
         private static TextAsset _googlePackagesJson;
         private Packages _packages;
-        private string _packageFolder = "ExternalPackages";
+        private string _packageFolder = "Packages";
         private string _packageResult;
 
 

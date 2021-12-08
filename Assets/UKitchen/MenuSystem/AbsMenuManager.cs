@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using ModestTree;
+using UKitchen.Logger;
 using UnityEngine;
 using Zenject;
 
@@ -15,13 +16,15 @@ namespace UKitchen.MenuSystem
 
         public Transform menuContainer => _menuContainer;
         public Transform popupContainer => _popupContainer;
-        public GameObject loadingAnim => _loadingAnim;
 
+        private List<string> _loadingKeys;
+
+        
         protected List<AbsMenu<TEnum>> menuLinkedList = new List<AbsMenu<TEnum>>();
 
         public virtual void Init()
         {
-            loadingAnim?.SetActive(false);
+            _loadingAnim.SetActive(false);
 
             foreach (Transform o in menuContainer?.transform)
             {
@@ -39,21 +42,48 @@ namespace UKitchen.MenuSystem
 
         public void Open(AbsMenu<TEnum> menu, IMenuArgs menuArgs)
         {
-            loadingAnim?.SetActive(true);
+            AddLoading(menu.menuName.ToString());
 
             if (menuArgs.mode == MenuMode.Single && !menu.isPopup)
                 CloseOthers();
 
             if (menuLinkedList.FirstOrDefault(s=>s.menuName.Equals(menu.menuName)) != null)
             {
-                loadingAnim?.SetActive(false);
+                RemoveLoading(menu.menuName.ToString());
                 return;
             }
 
             menuLinkedList.Add(menu);
             
             menu.Open();
-            loadingAnim?.SetActive(false);
+            RemoveLoading(menu.menuName.ToString());
+        }
+
+        public void AddLoading(string key)
+        {
+            _loadingKeys ??= new List<string>();
+            
+            _loadingKeys.Add(key);
+            
+            AppLog.Info(this, "ADD LOADING", _loadingKeys.Count, key);
+            
+            _loadingAnim.SetActive(_loadingKeys.Any());
+        }
+
+        public void RemoveLoading(string key)
+        {
+            _loadingKeys ??= new List<string>();
+
+            var str = _loadingKeys.FirstOrDefault(s => s.Equals(key));
+
+            if (!string.IsNullOrEmpty(str))
+            {
+                _loadingKeys.Remove(str);
+            }
+            
+            AppLog.Info(this, "REMOVE LOADING", _loadingKeys.Count, key);
+            
+            _loadingAnim.SetActive(_loadingKeys.Any());
         }
         
 

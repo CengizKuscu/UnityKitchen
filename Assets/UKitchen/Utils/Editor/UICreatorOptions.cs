@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace UKitchen.Utils
+namespace UKitchen.Utils.Editor
 {
     public class UICreatorOptions
     {
@@ -13,9 +13,9 @@ namespace UKitchen.Utils
         public static Vector2 s_defaultButtonSize = new Vector2(160, 30);
         
         public static Color s_defaultTextColor = new Color(50f / 255f, 50f / 255f, 50f / 255f, 1f);
-        private static Color s_DefaultSelectableColor = new Color(1f, 1f, 1f, 1f);
+        public static Color s_DefaultSelectableColor = new Color(1f, 1f, 1f, 1f);
         
-        private const string kStandardSpritePath = "UI/Skin/UISprite.psd";
+        public const string kStandardSpritePath = "UI/Skin/UISprite.psd";
         
         public static GameObject CreateUIElementRoot(string name, MenuCommand menuCommand, Vector2 size)
         {
@@ -154,6 +154,14 @@ namespace UKitchen.Utils
             {
                 Selection.activeGameObject = esys.gameObject;
             }
+        }
+        
+        public static GameObject CreateUIObject(string name, GameObject parent)
+        {
+            GameObject go = new GameObject(name);
+            go.AddComponent<RectTransform>();
+            GameObjectUtility.SetParentAndAlign(go, parent);
+            return go;
         }
     }
 }
